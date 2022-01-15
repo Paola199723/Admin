@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DataBusinessController;
+use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,17 +21,20 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
-// autenticacion login de Administrador
-Route::group(['middleware' => ['jwt.verify']], function() {
+route::post( '/user/data-user/{id}', [DataUserController::class, 'EditDataUser']);
+//editar datos de la empresa
+route::post( '/user/data-address',[DataAddressController::class, 'EditDataAddress']);
 
+// autenticacion del usuario
+Route::group(['middleware' => ['jwt.verify']], function() {
    // Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
     Route::post('/user', [UserController::class, 'getAuthenticatedUser']);
-
-
+    //editar datos de los usuarios
+  
 });
-
+//registro del usuario
 Route::post('/register', [UserController::class, 'register']);
-
+//inicio de sesion
 Route::post('/login', [UserController::class, 'authenticate']);
 //Route::post('register', 'App\Http\Controllers\UserController@register');
 
