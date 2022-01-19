@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataAddressController;
 use App\Http\Controllers\DataBusinessController;
 use App\Http\Controllers\DataUserController;
 use App\Http\Controllers\UserController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 route::post( '/user/data-user/{id}', [DataUserController::class, 'EditDataUser']);
 //editar datos de la empresa
-route::post( '/user/data-address',[DataAddressController::class, 'EditDataAddress']);
+route::post( '/user/data-address/{id}',[DataAddressController::class, 'EditDataAddress']);
 
 // autenticacion del usuario
 Route::group(['middleware' => ['jwt.verify']], function() {

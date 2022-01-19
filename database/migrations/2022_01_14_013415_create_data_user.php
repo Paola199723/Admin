@@ -13,7 +13,7 @@ class CreateDataUser extends Migration
      */
     public function up()
     {
-        Schema::create('data_user', function (Blueprint $table) {
+        Schema::create('data_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

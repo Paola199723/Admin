@@ -13,7 +13,7 @@ class CreateDataAddress extends Migration
      */
     public function up()
     {
-        Schema::create('data_address', function (Blueprint $table) {
+        Schema::create('data_addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
