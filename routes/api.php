@@ -26,6 +26,8 @@ route::post( '/user/data-user/{id}', [DataUserController::class, 'EditDataUser']
 //editar datos de la empresa
 route::post( '/user/data-address/{id}',[DataAddressController::class, 'EditDataAddress']);
 
+route::post( '/user/data-address/{id}',[DataAddressController::class, 'EditDataAddress']);
+
 // autenticacion del usuario
 Route::group(['middleware' => ['jwt.verify']], function() {
    // Route::post('user','App\Http\Controllers\UserController@getAuthenticatedUser');
