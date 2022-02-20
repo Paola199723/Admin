@@ -15,6 +15,13 @@ class CreateProductTable extends Migration
     {
         Schema::create('product', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_admin')->unsigned();
+            $table->foreign('id_admin')->references('id')->on('addresses');
+            $table->string('products');
+            $table->string('codigo');
+            $table->string('precio_compra');
+            $table->string('cant_exists');
+            $table->string('precio_venta');
             $table->timestamps();
         });
     }

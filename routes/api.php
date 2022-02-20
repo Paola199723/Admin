@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\CashierController;
 use App\Http\Controllers\DataAddressController;
 use App\Http\Controllers\DataBusinessController;
 use App\Http\Controllers\DataUserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +28,14 @@ use Illuminate\Support\Facades\Route;
 route::post( '/user/data-user/{id}', [DataUserController::class, 'EditDataUser']);
 //editar datos de la empresa
 route::post( '/user/data-address/{id}',[DataAddressController::class, 'EditDataAddress']);
+// productos posee un crud, crear editar, borrar y buscar.
+route::post( '/user/data-address/{id}',[ProductController::class, 'create']);
 
-route::post( '/user/data-address/{id}',[DataAddressController::class, 'EditDataAddress']);
+// cajero puede listar productos, y seleccionar productos.
+route::post( '/user/data-address/{id}',[CashierController::class, 'create']);
+// registra la venta, listar los productos seleccionados. litar la ventaas por usuario, 
+route::post( '/user/data-address/{id}',[SaleController::class, 'create']);
+
 
 // autenticacion del usuario
 Route::group(['middleware' => ['jwt.verify']], function() {

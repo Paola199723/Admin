@@ -15,6 +15,10 @@ class CreateSaleTable extends Migration
     {
         Schema::create('sale', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_producto')->unsigned();
+            $table->foreign('id_producto')->references('id')->on('product');
+            $table->string('id_cajero');
+            $table->string('cant');
             $table->timestamps();
         });
     }

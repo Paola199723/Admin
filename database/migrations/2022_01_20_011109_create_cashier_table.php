@@ -15,6 +15,9 @@ class CreateCashierTable extends Migration
     {
         Schema::create('cashier', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('id_admin');
             $table->timestamps();
         });
     }
